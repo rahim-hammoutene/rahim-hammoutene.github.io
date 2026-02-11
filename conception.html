@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Conception</title>
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img class="logo" src="img/logo.png" alt="Logo du projet">
+        </a>
+        <nav id="menu-principal">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="regles.html">Règles</a></li>
+                <li><a href="conception.html">Conception</a></li>
+                <li><a href="equipe.html">L'Équipe</a></li>
+                <li><a href="specificites.html">Spécificités</a></li>
+                <li><a href="">#######</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Architecture du Jeu</h1>
+
+        <section>
+            <h2>Structure des données</h2>
+            <p>
+                Le plateau est représenté par un tableau à deux dimensions
+                <code>Case[][] plateau</code>, chaque case contenant éventuellement un pion.
+            </p>
+        </section>
+
+        <section>
+            <h2>Principales classes du modèle</h2>
+
+            <article>
+                <h3>Partie</h3>
+                <p>
+                    La classe <code>Partie</code> orchestre une session complète de jeu.
+                    Elle contient le <code>Plateau</code>, la liste des <code>Joueur</code>,
+                    l'état courant (tour en cours, fin de partie, vainqueur, etc.)
+                    et l'historique des <code>Coup</code>.
+                </p>
+            </article>
+
+            <article>
+                <h3>Joueur</h3>
+                <p>
+                    La classe <code>Joueur</code> représente un participant humain ou bot.
+                    Elle possède une couleur, un ensemble de <code>Pion</code> et les informations
+                    nécessaires pour jouer (nom, type de joueur, stratégie si c’est un bot).
+                </p>
+            </article>
+
+            <article>
+                <h3>Coup</h3>
+                <p>
+                    La classe <code>Coup</code> décrit un déplacement effectué pendant la partie.
+                    Elle mémorise le <code>Joueur</code> qui joue, la position de départ
+                    et la position d’arrivée, et permet de rejouer ou annuler un mouvement
+                    si nécessaire.
+                </p>
+            </article>
+
+            <article>
+                <h3>Plateau</h3>
+                <p>
+                    La classe <code>Plateau</code> encapsule la grille de jeu
+                    (<code>Case[][]</code>) et les opérations associées :
+                    récupération d’une case, vérification des déplacements possibles,
+                    gestion de la zone centrale et détection de la fin de partie.
+                </p>
+            </article>
+
+            <article>
+                <h3>Case</h3>
+                <p>
+                    La classe <code>Case</code> représente une position du plateau.
+                    Elle connaît ses coordonnées, le type de zone (normale, départ, zone centrale)
+                    et éventuellement le <code>Pion</code> qui s’y trouve.
+                </p>
+            </article>
+
+            <article>
+                <h3>Pion</h3>
+                <p>
+                    La classe <code>Pion</code> modélise un pion de dames chinoises :
+                    sa couleur, sa position actuelle et son statut (normal ou super pion).
+                    Lorsqu’un pion entre dans la zone centrale, il peut être promu en super pion,
+                    ce qui modifie les règles de déplacement appliquées par le <code>Plateau</code>.
+                </p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Diagramme UML des classes</h2>
+            <p>
+                Le diagramme UML ci-dessous illustre les relations entre les principales classes
+                de notre application (composition, agrégation et associations).
+            </p>
+
+            <figure>
+                <img src="img/uml-classes.png"
+                     alt="Diagramme UML des classes Partie, Joueur, Coup, Plateau, Case et Pion">
+                <figcaption>Diagramme UML des principales classes du projet de dames chinoises.</figcaption>
+            </figure>
+
+        
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - L2 Informatique - CY Cergy Paris Université</p>
+    </footer>
+</body>
+</html>
